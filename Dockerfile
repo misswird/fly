@@ -1,17 +1,14 @@
-# Ê¹ÓÃ node:slim ×÷Îª»ù´¡¾µÏñ
-FROM node:slim
+FROM node:alpine
 
-# ÉèÖÃ¹¤×÷Ä¿Â¼
 WORKDIR /app
 
-# ½«µ±Ç°Ä¿Â¼ÏÂµÄËùÓĞÎÄ¼ş¸´ÖÆµ½¹¤×÷Ä¿Â¼
 COPY . .
 
-# ¸üĞÂÏµÍ³²¢°²×° curl¡¢gawk ºÍ sed ¹¤¾ß£¬Îª index.js ÎÄ¼şÌí¼ÓÖ´ĞĞÈ¨ÏŞ£¬È»ºó°²×°Ó¦ÓÃµÄÒÀÀµÏî
-RUN apt-get update && \
-    apt-get install -y curl gawk sed && \
-    chmod +x index.js && \
+EXPOSE 3000
+
+# æ›´æ–°å¹¶å®‰è£… curl å’Œå…¶ä»–å¿…è¦çš„å·¥å…·
+RUN apk update && \
+    apk add --no-cache bash curl && \
     npm install
 
-# ¶¨ÒåÈİÆ÷Æô¶¯Ê±Ö´ĞĞµÄÃüÁîÎª node index.js
 CMD ["node", "index.js"]
