@@ -25,4 +25,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/misswird/ndejs-argo-nz:latest
+          tags: ghcr.io/misswird/nndejs-argo-nz:latest
